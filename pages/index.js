@@ -10,12 +10,14 @@ import style2 from '../assets/style2.jpg'
 import style5 from '../assets/style5.jpg'
 import SecondView from '../components/SecondView';
 import Infinity from '../components/Infinity';
+import ScrollToTop from '../components/ScrollToTop';
+import { useScroll, motion } from 'framer-motion';
 // import style6 from '../assets/style6.jpg'
 
 
 export default function Home() {
-    
-  
+  // const { scrollYProgress } = useScroll();
+
   return (
     <div >
       <Head>
@@ -26,6 +28,10 @@ export default function Home() {
       <HomeDiv>
       <Navbar />
           <FirstView>
+          {/* <motion.div
+        className="progress-bar"
+        // style={{ scaleX: scrollYProgress }}
+      /> */}
             <Div1>
               <div>
                 <h1>Find The best
@@ -82,6 +88,7 @@ export default function Home() {
                 </div>
               </BigContainer>
             </Div2>
+            <ScrollToTop />
             <Infinity />
           </FirstView>
           <Second>
@@ -94,6 +101,15 @@ export default function Home() {
 
 const HomeDiv = styled.div`
   overflow-x: hidden;
+  .progress-bar {
+    position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: var(--red);
+  transform-origin: 0%;
+  }
 `;
 const FirstView = styled.div`
   height: 100vh;
@@ -153,7 +169,7 @@ const ActionBut = styled.div`
   gap: 3rem;
   margin-left: 12.5rem;
   box-sizing: border-box;
-  margin-top: -1rem;
+  margin-top: 1rem;
   p {
     background: var(--primary);
     color: black;
