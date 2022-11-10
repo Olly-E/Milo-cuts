@@ -8,6 +8,31 @@ import services from '../assets/services.jpg'
 import Image from 'next/image';
 
 export default function SecondView() {
+
+  const feauturesCard = [
+    {
+      icon: img1,
+      head: 'Blazing fast services',
+      desc1: 'Lorem ipsum',
+      desc2: 'Lorem dolor (N1000)',
+      price: '200$',
+    },
+    {
+      icon: img2,
+      head: 'State of the art tools',
+      desc1: 'Lorem ipsum',
+      desc2: 'Lorem dolor (N1000)',
+      price: '200$',
+    },
+    {
+      icon: img3,
+      head: 'Superb customer service',
+      desc1: 'Lorem ipsum',
+      desc2: 'Lorem dolor (N1000)',
+      price: '200$',
+    }
+    
+  ]
   return (
     <SecondVieww>
       <Container1>
@@ -17,33 +42,19 @@ export default function SecondView() {
           Our Feuatured hair treatment services is second to none and absolutley top notch, with experts and hands-on attention, it'll leave you wanting for more...
         </p>
         <div className='cat-card-con'>
-          <div className='cat-card'>
-            <div style={{display: 'flex', justifyContent: 'center', marginBottom: '1rem'}}><Image src={img2} height={64} width={64}/></div>
-            <h3>Improved instruments</h3>
-            <ul>
-              <li><span>Lorem ipsum</span></li>
-              <li><span>Lorem dolor (N1000)</span></li>
-            </ul>
-            <h2>$200</h2>
-          </div>
-          <div className='cat-card'>
-           <div style={{display: 'flex', justifyContent: 'center', marginBottom: '1rem'}}> <Image src={img1} height={64} width={64}/></div>
-            <h3>Blazing fast services</h3>
-            <ul>
-              <li><span>Lorem ipsum</span></li>
-              <li><span>Lorem dolor (N1000)</span></li>
-            </ul>
-            <h2>$200</h2>
-          </div>
-          <div className='cat-card'>
-            <div style={{display: 'flex', justifyContent: 'center', marginBottom: '1rem'}}><Image src={img3} height={64} width={64}/></div>
-            <h3>Amazing customer service</h3>
-            <ul>
-              <li><span>Lorem ipsum</span></li>
-              <li><span>Lorem dolor (N1000)</span></li>
-            </ul>
-            <h2>$200</h2>
-          </div>
+          {feauturesCard.map((feature) => {
+            return (
+            <div className='cat-card'>
+              <div style={{display: 'flex', justifyContent: 'center', marginBottom: '1rem'}}><Image src={feature.icon} height={64} width={64}/></div>
+              <h3>{feature.head}</h3>
+              <ul>
+                <li><span>{feature.desc1}</span></li>
+                <li><span>{feature.desc2}</span></li>
+              </ul>
+              <h2>{feature.price}</h2>
+            </div>  
+            )
+          })}
         </div>
           <p className='all-services'>All Services</p>
       </Container1>

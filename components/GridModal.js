@@ -139,8 +139,9 @@ export default function GridModal({setShowModal}) {
           variants={container}
           initial="hidden"
           animate="show"
+          style={{padding: 0, margin: 0}}
         >
-          <ImageList variant="masonry" cols={3} gap={8}>
+          <ImageList variant="masonry" cols={3} gap={0} style={{columnGap: '8px' }}>
             {itemData.map((item) => (
               <ImageListItem key={item.img}>
                 <motion.div
@@ -170,7 +171,7 @@ export default function GridModal({setShowModal}) {
 const DivModal = styled(motion.div)`
   background: black;
   width: 3%;
-  height: 3%;
+  height: 1%;
   background: black;
   padding: 8rem;
   overflow-y: scroll;
