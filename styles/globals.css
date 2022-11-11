@@ -14,3 +14,24 @@ body {
 :root {
   --primary: hsl(169deg 84% 36%);
 }
+
+::selection {
+  background: var(--secondary-color);
+  color: white;
+}
+::-webkit-scrollbar {
+  background: black;
+  width: 0.3rem;
+  /* color: --() */
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary);
+  border-radius: 8px;
+  height: 1rem;
+}
+
+@media screen and (min-width) and (max-width: 1080px) {
+  body::-webkit-scrollbar {
+    display: none;
+  }
+}
