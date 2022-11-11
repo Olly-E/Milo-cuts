@@ -50,3 +50,12 @@ export const container = {
     }
   }
 
+
+  // second screen animation
+
+  const feautreHead1 = {
+    hidden: {
+      y: '10px',
+      opacity: 0
+    }
+  }
