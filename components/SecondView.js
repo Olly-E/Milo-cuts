@@ -6,6 +6,8 @@ import img2 from '../assets/img2.png'
 import img3 from '../assets/img3.png'
 import services from '../assets/services.jpg'
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { featureCardConatinerAnim, feautreCardAnim } from './Animation';
 
 export default function SecondView() {
 
@@ -35,16 +37,25 @@ export default function SecondView() {
   ]
   return (
     <SecondVieww>
-      <Container1>
+      <Container1
+        
+      >
         <h2 className='conH1'>HAIR TREATMENT</h2>
         <h1 className='conH2'>Our Feautured Hair Treatment</h1>
         <p className='conp'>
           Our Feuatured hair treatment services is second to none and absolutley top notch, with experts and hands-on attention, it'll leave you wanting for more...
         </p>
-        <div className='cat-card-con'>
+        <motion.div className='cat-card-con'
+          variants={featureCardConatinerAnim}
+          initial="hidden"
+          whileInView="show"
+        viewport={{once: true}}
+        >
           {feauturesCard.map((feature) => {
             return (
-            <div className='cat-card'>
+            <motion.div className='cat-card'
+              variants={feautreCardAnim}
+            >
               <div style={{display: 'flex', justifyContent: 'center', marginBottom: '1rem'}}><Image src={feature.icon} height={64} width={64}/></div>
               <h3>{feature.head}</h3>
               <ul>
@@ -52,10 +63,10 @@ export default function SecondView() {
                 <li><span>{feature.desc2}</span></li>
               </ul>
               <h2>{feature.price}</h2>
-            </div>  
+            </motion.div>  
             )
           })}
-        </div>
+        </motion.div>
           <p className='all-services'>All Services</p>
       </Container1>
          <div className='div-dec' />
@@ -66,9 +77,9 @@ export default function SecondView() {
   );
 }
 
+// const Div = styled(motion.div)`
 
-const SecondVieww = styled.div`
-  /* box-sizing: border-box; */
+const SecondVieww = styled(motion.div)`
   position: relative;
   padding: 2rem 14rem 10em;
   .all-services {
@@ -92,7 +103,7 @@ const SecondVieww = styled.div`
     }
   `;
 
-  const Container1 =  styled.div`
+  const Container1 =  styled(motion.div)`
     margin-top: 14rem;
     max-width: 50rem;
     z-index: 5;
@@ -119,7 +130,6 @@ const SecondVieww = styled.div`
       line-height: 2rem;
       margin-top: 1.7rem;
       .cat-card{
-        /* border: 1px solid black; */
         padding: 2rem 1.5rem;
         border-radius: 0.6rem;
         box-shadow: -1px 1px 5px 0px rgb(145 145 145 / 67%);

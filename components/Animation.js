@@ -53,9 +53,26 @@ export const container = {
 
   // second screen animation
 
-  const feautreHead1 = {
+  const feautreHead1Anim = {
     hidden: {
       y: '10px',
       opacity: 0
     }
+  }
+
+  export const featureCardConatinerAnim = {
+    hidden: { opacity: 1 },
+    show: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        delay: 1,
+        delayChildren: 0.3,
+        staggerChildren: 0.2
+      }
+    }
+  }
+  export const feautreCardAnim = {
+    hidden: {scale: 1.2, opacity: 0},
+    show:  {scale: 1, opacity: 1}
   }

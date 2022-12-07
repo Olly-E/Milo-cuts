@@ -19,14 +19,15 @@ const ScrollToTop = () => {
 
   return (
     <Div>
-        <div className={`${visible ? 'scroll-circle' : 'none'}`}>
+         <div className={`${visible ? 'scroll-circle' : 'none'}`} >
+            <a href="#">
             <FaChevronUp />
-            <motion.a href="#"className={`${visible ? 'block' : 'none'}`}
-                style={{
-                    scaleY: scrollYProgress
-                }}
+            <motion.p href="#"className={`${visible ? 'block' : 'none'}`}
+                style={{scale: scrollYProgress}}
+                animate={{rotate: ['0deg', '600deg'], transition:{duration: 6, repeat: Infinity}}}
             >
-            </motion.a>
+            </motion.p>
+            </a>
         </div>
     </Div>
   );
@@ -60,21 +61,20 @@ const Div = styled(motion.div)`
             margin-top: 30%;
         }
     }
-    a {
-        bottom: 60px;
-        right: 40px;
+    p {
         width: 1.6rem;
-        height: 2rem;
+        height: 2.1rem;
         background-color: var(--primary);
         padding: 1.5rem;
-        margin-top: -1.7rem;
+        padding-bottom: 2.5rem;
+        margin-top: -0.3px;
+        margin-left: -0.7rem;
+        border-radius: 2rem ;
         display: flex;
-        transform-origin: 50% 100%;
+        /* transform-origin: 10% 100%; */
         justify-content: center;
         align-items: center;
         z-index: 10000;
-        transition: 0.4s ease-in-out;
-        
     }
 
 `;

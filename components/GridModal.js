@@ -15,7 +15,7 @@ import show6 from '../assets/show6.jpg';
 import show7 from '../assets/show7.jpg';
 import show8 from '../assets/show8.jpg';
 import show9 from '../assets/show9.jpg';
-import show10 from '../assets/show10.jpg';
+// import show10 from '../assets/show10.jpg';
 import show11 from '../assets/show11.jpg';
 import show12 from '../assets/show12.jpg';
 import show13 from '../assets/show13.jpg';
@@ -87,10 +87,10 @@ export default function GridModal({setShowModal}) {
     imgTitle: 'show9',
     img: show9
   },
-  {
-    imgTitle: 'show10',
-    img: show10
-  },
+  // {
+  //   imgTitle: 'show10',
+  //   img: show10
+  // },
   {
     imgTitle: 'show11',
     img: show11
@@ -141,7 +141,7 @@ export default function GridModal({setShowModal}) {
           animate="show"
           style={{padding: 0, margin: 0}}
         >
-          <ImageList variant="masonry" cols={3} gap={0} style={{columnGap: '8px' }}>
+          <ImageList variant="masonry" cols={5} gap={0} style={{columnGap: '8px' }}>
             {itemData.map((item) => (
               <ImageListItem key={item.img}>
                 <motion.div

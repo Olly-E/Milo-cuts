@@ -12,6 +12,8 @@ import ScrollToTop from '../components/ScrollToTop';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import GridModal from '../components/GridModal';
+import ThirdView from '../components/ThirdView';
+import SlandSlider from '../components/SlandSlider';
 
 
 
@@ -36,10 +38,6 @@ export default function Home() {
       <Navbar />
       <div className='flow flowSwitch' >
           <FirstView>
-          {/* <motion.div
-        className="progress-bar"
-        // style={{ scaleX: scrollYProgress }}
-      /> */}
             <Div1>
               <div>
                 <h1>Find The best
@@ -81,18 +79,8 @@ export default function Home() {
             </Div1>
             <Div2>
               <BigContainer>
-                <ImageContainer1>
-                  <Image width={400} height={550} className="image1" objectFit='cover' src={style2}/>
-                </ImageContainer1>
-                <ImageContainer2>
-                  <Image width={400} height={550} className="image1" objectFit='cover' src={style1}/>
-                </ImageContainer2>
-                <ImageContainer3>
-                  <Image width={400} height={550} className="image1" objectFit='cover' src={style5}/>
-                </ImageContainer3>
+                <SlandSlider />
                 {!showModal && <div className='circle' onClick={() => setShowModal(true)}><h3>Show more</h3></div>}
-                
-            
               </BigContainer>
             </Div2>
             <ScrollToTop />
@@ -101,6 +89,7 @@ export default function Home() {
           <Second>
             <SecondView />
           </Second>
+          <ThirdView />
     </div>
       </HomeDiv>
       </div>
