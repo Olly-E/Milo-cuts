@@ -14,6 +14,7 @@ import { useEffect, useRef, useState } from 'react';
 import GridModal from '../components/GridModal';
 import ThirdView from '../components/ThirdView';
 import SlandSlider from '../components/SlandSlider';
+import FourthView from '../components/FourthView';
 
 
 
@@ -90,6 +91,7 @@ export default function Home() {
             <SecondView />
           </Second>
           <ThirdView />
+          <FourthView />
     </div>
       </HomeDiv>
       </div>
