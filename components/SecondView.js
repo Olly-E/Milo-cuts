@@ -69,8 +69,8 @@ export default function SecondView() {
         </motion.div>
           <p className='all-services'>All Services</p>
       </Container1>
-         <div className='div-dec' />
       <Container2>
+         <div className='div-dec' />
          <Image src={services} width={550}  height={700} objectFit='cover' tabIndex={7}/>
       </Container2>
     </SecondVieww>
@@ -81,7 +81,12 @@ export default function SecondView() {
 
 const SecondVieww = styled(motion.div)`
   position: relative;
-  padding: 2rem 14rem 10em;
+  padding: 2rem 14rem 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  height: 100vh;
   .all-services {
     font-weight: 600;
     border: 2px solid black;
@@ -90,17 +95,6 @@ const SecondVieww = styled(motion.div)`
     padding: 0.3rem 0.8rem;
     margin-top: 2.5rem;
   }
-  .div-dec {
-      width: 40rem;
-      margin-top: -38rem;
-      margin-left: 35rem;
-      height: 37rem;
-      z-index: 1;
-      position: absolute;
-      border-radius: 0 0 0 3rem;
-      border: 8px solid var(--primary);
-      
-    }
   `;
 
   const Container1 =  styled(motion.div)`
@@ -108,6 +102,7 @@ const SecondVieww = styled(motion.div)`
     max-width: 50rem;
     z-index: 5;
     position: relative;
+
     .conH1 {
       font-size: 1.4rem;
       color: var(--primary)
@@ -159,9 +154,21 @@ const SecondVieww = styled(motion.div)`
   ` ;
 
   const Container2 =  styled.div`
-    position: absolute;
+    position: relative;
     top: 0;
-    margin-top: 13.5rem;
-    margin-left: 38.5rem;
+    margin-top: 5rem;
+    margin-left: -7rem;
     z-index: 2;
+
+    .div-dec {
+      width: 40rem;
+      margin-top: 2rem;
+      margin-left: -3.3rem;
+      height: 37rem;
+      z-index: -1;
+      position: absolute;
+      border-radius: 0 0 0 3rem;
+      border: 8px solid var(--primary);
+      
+    }
   `;

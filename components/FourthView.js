@@ -12,4 +12,7 @@ export default function FourthView() {
 
 const Sec1 = styled.section`
     color: white;
+    height: 100vh;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
 `;

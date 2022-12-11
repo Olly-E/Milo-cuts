@@ -47,6 +47,8 @@ export default function ThirdView() {
 
 const ThirdSection = styled.div`
     height: 100vh;
+    scroll-snap-align: start;
+  scroll-snap-stop: always;
     background: black;
     color: white;
     padding: 5rem 10rem;
@@ -105,7 +107,7 @@ const ThirdSection = styled.div`
       .drop-icons {
         color: black;
         font-size: 5rem;
-        transform: rotate(-60deg);
+        transform: rotate(-30deg);
         position: absolute;
         top: -0.5rem;
         right: -0.5rem;

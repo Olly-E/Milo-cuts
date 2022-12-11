@@ -15,11 +15,16 @@ import GridModal from '../components/GridModal';
 import ThirdView from '../components/ThirdView';
 import SlandSlider from '../components/SlandSlider';
 import FourthView from '../components/FourthView';
+import Aboutus from '../components/Aboutus';
+import Script from 'next/script';
+
+
 
 
 
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
+  
 
   // const { scrollYProgress } = useScroll();
 
@@ -36,8 +41,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HomeDiv >
-      <Navbar />
-      <div className='flow flowSwitch' >
+      {/* <Navbar /> */}
           <FirstView>
             <Div1>
               <div>
@@ -87,12 +91,14 @@ export default function Home() {
             <ScrollToTop />
             <Infinity />
           </FirstView>
+          <AboutSection>
+            <Aboutus />
+          </AboutSection>
           <Second>
             <SecondView />
           </Second>
           <ThirdView />
           <FourthView />
-    </div>
       </HomeDiv>
       </div>
       <AnimatePresence>
@@ -103,6 +109,8 @@ export default function Home() {
 
 const BigDiv = styled.div`
 
+  
+
 .modal-on {
   height: 100vh;
   overflow: hidden;
@@ -111,6 +119,9 @@ const BigDiv = styled.div`
 
 const HomeDiv = styled.div`
   overflow-x: hidden;
+  height: 100vh;
+  overflow-y: scroll;
+  /* scroll-snap-type: y mandatory; */
 
   .progress-bar {
     position: fixed;
@@ -127,6 +138,8 @@ const FirstView = styled.div`
   display: flex;
   position: relative;
   
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 
   .gridModal {
     position: absolute;
@@ -203,6 +216,11 @@ const ActionBut = styled.div`
     color: white;
     box-shadow: 1px 0px 1px gray;
   }
+`;
+const AboutSection = styled.div`
+  height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 `;
 
 const Watchvideo =  styled.div`
@@ -322,25 +340,12 @@ const BigContainer = styled.div`
     }
   }
 `;
-const ImageContainer1 =  styled.div`
-  margin-left: 1rem;
- position: absolute;
- margin-top: 2.8rem;
-  transform: rotate(-8deg);
-`;
-const ImageContainer2 =  styled.div`
-  margin-left: 1rem;
- position: absolute;
- margin-top: 2.8rem;
-`;
-const ImageContainer3 =  styled.div`
-  margin-left: 1rem;
-   position: absolute;
-   margin-top: 2.8rem;
-   transform: rotate(8deg);
-`;
+
 const Second =  styled.div`
   box-sizing: border-box;
   z-index: 500;
   margin-top: -2rem;
+  height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 `;
