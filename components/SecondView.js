@@ -98,7 +98,7 @@ const SecondVieww = styled(motion.div)`
   `;
 
   const Container1 =  styled(motion.div)`
-    margin-top: 14rem;
+    margin-top: 5rem;
     max-width: 50rem;
     z-index: 5;
     position: relative;

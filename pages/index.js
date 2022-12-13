@@ -41,7 +41,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HomeDiv >
-      {/* <Navbar /> */}
+      <Navbar />
           <FirstView>
             <Div1>
               <div>
@@ -119,8 +119,8 @@ const BigDiv = styled.div`
 
 const HomeDiv = styled.div`
   overflow-x: hidden;
-  height: 100vh;
-  overflow-y: scroll;
+  /* height: 100vh;
+  overflow-y: scroll; */
   /* scroll-snap-type: y mandatory; */
 
   .progress-bar {
@@ -138,8 +138,8 @@ const FirstView = styled.div`
   display: flex;
   position: relative;
   
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
+  /* scroll-snap-align: start;
+  scroll-snap-stop: always; */
 
   .gridModal {
     position: absolute;
