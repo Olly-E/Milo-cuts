@@ -17,6 +17,8 @@ import SlandSlider from '../components/SlandSlider';
 import FourthView from '../components/FourthView';
 import Aboutus from '../components/Aboutus';
 import Script from 'next/script';
+import FooterView from '../components/FooterView';
+import { acheive1, acheive2, acheive3, BigContainerAnim, containerChild, containerChild2, containerVariant, containerVariant2, description1, description2, description3, fabButtons, fabButtons2, fabButtons3, firstDivAnim } from '../components/Animation';
 
 
 
@@ -24,12 +26,13 @@ import Script from 'next/script';
 
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
+
+  const firstHeading = ('Find The best Barber Shop').split(" "); 
+  const secondHeading = Array.from('For You')
   
-
-  // const { scrollYProgress } = useScroll();
-
-
-    // showModal ? document.body.style.overflow = 'hidden': document.body.style.overflow = 'auto'
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
 
   return (
@@ -44,46 +47,113 @@ export default function Home() {
       <Navbar />
           <FirstView>
             <Div1>
-              <div>
-                <h1>Find The best
-                Barber Shop</h1> 
-                <ForYou>For You</ForYou>
+              <motion.div className='cover-div'
+                 variants={firstDivAnim}
+                 initial="hidden"
+                 animate="visible"
+              >
+                <motion.div className='heading1'
+                  style={{overflow: "hidden", display: 'flex' }}
+                  variants={containerVariant}
+                  initial="hidden"
+                  animate="visible"
+                >
+                  {firstHeading.map((word, index) => {
+                   return (<motion.span 
+                    variants={containerChild}
+                    style={{marginRight: '2rem'}} key={index}>{word === " " ? "\u00A0" : word}</motion.span>) 
+                  })}
+                </motion.div>
+                <motion.div
+                  style={{display: 'flex', gap: '1rem' }}
+                  variants={containerVariant2}
+                  initial="hidden"
+                  animate="visible"
+                >
+                    {secondHeading.map((word, index) => {
+                    return (<ForYou
+                      variants={containerChild2}
+                      style={{marginRight: ''}} key={index}
+                    >{word === " " ? "\u00A0" : word}</ForYou>)})}
+                </motion.div>
                 <section>
                 <Description>
-                  haircut Services For men and women. Where here the customers hair, saclp, Face and body can be 
-                  pampered, with the best servicess and facilities
+                  <motion.p
+                    variants={description1}
+                    initial="hidden"
+                    animate="visible"
+                  >Haircut Services For men and women. Where here the customers </motion.p>  
+                  <motion.p
+                    variants={description2}
+                    initial="hidden"
+                    animate="visible"
+                  >hair, saclp, Face and body can be pampered, with the best </motion.p> 
+                  <motion.p
+                    variants={description3}
+                    initial="hidden"
+                    animate="visible"
+                  >servicess and facilities</motion.p>
                 </Description>
                 <ActionBut>
-                  <p>Book Now</p>
+                  <div style={{overflow: 'hidden'}}>
+                    <motion.p
+                      variants={fabButtons}
+                      initial="hidden"
+                      animate="visible"
+                    >Book Now</motion.p>
+                  </div>
                   <Watchvideo>
-                    <span>
+                    <motion.span
+                       variants={fabButtons2}
+                       initial="hidden"
+                       animate="visible"
+                    >
                       <BsPlayFill />
-                    </span>
-                    <p>Watch Video</p>
+                    </motion.span>
+                    <motion.p
+                       variants={fabButtons3}
+                       initial="hidden"
+                       animate="visible"
+                    >Watch Video</motion.p>
                   </Watchvideo>
-                  
                 </ActionBut>
                 <Acheivement>
-                  <div className='acheivment'>
+                  <motion.div className='acheivment'
+                       variants={acheive1}
+                       initial="hidden"
+                       animate="visible"
+                  >
                     <div className='plusDiv'><span style={{fontSize: '1.2rem', color: 'hsl(169deg 84% 36%)' }}>+</span><span>20</span></div>
                     <p>Years Of Experience</p>
-                  </div>
-                  <span style={{borderLeft: '3px solid hsl(24deg 49% 94%)', height: '5rem', width: '0'}}/>
-                  <div className='acheivment'>
+                  </motion.div>
+                  <motion.span style={{borderLeft: '3px solid hsl(24deg 49% 94%)', height: '5rem', width: '0'}} variants={acheive1}/>
+                  <motion.div className='acheivment'
+                       variants={acheive2}
+                       initial="hidden"
+                       animate="visible"
+                  >
                     <div className='plusDiv'><span  style={{fontSize: '1.2rem', color: 'hsl(169deg 84% 36%)' }}>+</span><span>80</span></div>
                     <p>Our Awesome Expert</p>
-                  </div>
-                  <span style={{borderLeft: '3px solid hsl(24deg 49% 94%)', height: '5rem', width: '0'}}/>
-                  <div className='acheivment'>
+                  </motion.div>
+                  <motion.span style={{borderLeft: '3px solid hsl(24deg 49% 94%)', height: '5rem', width: '0'}} variants={acheive3}/>
+                  <motion.div className='acheivment'
+                       variants={acheive3}
+                       initial="hidden"
+                       animate="visible"
+                  >
                     <div className='plusDiv'><span style={{ fontSize: '1.2rem', color: 'hsl(169deg 84% 36%)'}}>+</span><span>20K</span></div>
                     <p>Happy Customer</p>
-                  </div>
+                  </motion.div>
                 </Acheivement>
                 </section>
-              </div>
+              </motion.div>
             </Div1>
             <Div2>
-              <BigContainer>
+              <BigContainer
+                 variants={BigContainerAnim}
+                 initial="hidden"
+                 animate="visible"
+              >
                 <SlandSlider />
                 {!showModal && <div className='circle' onClick={() => setShowModal(true)}><h3>Show more</h3></div>}
               </BigContainer>
@@ -99,6 +169,7 @@ export default function Home() {
           </Second>
           <ThirdView />
           <FourthView />
+          <FooterView />
       </HomeDiv>
       </div>
       <AnimatePresence>
@@ -146,11 +217,9 @@ const FirstView = styled.div`
     overflow: hidden;
     width: 100vw;
     height: 100vh;
-    /* border: 3px solid purple; */
     top: 0;
     left: 0;
     z-index: 40000;
-    /* background: black; */
   }
 `;
 
@@ -160,19 +229,25 @@ const Div1 = styled.div`
     padding-left: 13rem;
     box-sizing: border-box;
     z-index: 300;
-    section {
+
+    .cover-div{
+      
+    }
+    /* section {
       position: absolute;
       left: 1rem;
       width: max-content;
       background: transparent;
-    }
-    h1{
+    } */
+    .heading1{
       margin-top: 10rem;
+      display: flex;
+      flex-wrap: wrap;
       color: black; 
       font-size: 7rem;
       font-weight: 500;
       line-height: 7rem;
-      width: 1000px;
+      width: 800px;
       word-spacing: 5px;
       letter-spacing: 1px;
       margin-bottom: 0;
@@ -181,7 +256,7 @@ const Div1 = styled.div`
 `;
 
 
-const ForYou = styled.p` 
+const ForYou = styled(motion.p)` 
   font-family: 'Qwigley';
   font-weight: 500;
   font-size: 9rem;
@@ -197,14 +272,14 @@ const Description = styled.h5`
   width: 30rem;
   font-weight: 500;
   margin-top: -2rem;
-  margin-left: 12.5rem;
+  /* margin-left: 12.5rem; */
   font-size: 1rem;
 `;
 const ActionBut = styled.div`
   display: flex;
   align-items: center;
   gap: 3rem;
-  margin-left: 12.5rem;
+  /* margin-left: 12.5rem; */
   box-sizing: border-box;
   margin-top: 1rem;
   p {
@@ -223,9 +298,10 @@ const AboutSection = styled.div`
   scroll-snap-stop: always;
 `;
 
-const Watchvideo =  styled.div`
+const Watchvideo =  styled(motion.div)`
   align-items: center;
   display: flex;
+  overflow: hidden;
     span{
       padding: 0.5rem;
       border-radius: 100%;
@@ -234,6 +310,7 @@ const Watchvideo =  styled.div`
       justify-self: center;
       align-items: center;
       font-size: 1.5rem;
+      background: white;
     }
   p {
    background: white;
@@ -246,7 +323,6 @@ const Watchvideo =  styled.div`
 `;
 const Acheivement = styled.div`
   display: flex;
-  margin-left: 12.5rem;
   box-sizing: border-box;
   gap: 1rem;
   margin-top: 2.5rem;
@@ -290,7 +366,7 @@ const Div2 = styled.div`
     }
    }
 `;
-const BigContainer = styled.div`
+const BigContainer = styled(motion.div)`
   position: relative;
   top: 0;
   width: 100%;

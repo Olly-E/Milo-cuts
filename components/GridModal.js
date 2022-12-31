@@ -143,7 +143,7 @@ export default function GridModal({setShowModal}) {
         >
           <ImageList variant="masonry" cols={5} gap={0} style={{columnGap: '8px' }}>
             {itemData.map((item) => (
-              <ImageListItem key={item.img}>
+              <ImageListItem key={item.imgTitle}>
                 <motion.div
                   variants={itemImg}
                   initial={{opacity: 0}}

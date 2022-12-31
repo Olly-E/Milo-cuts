@@ -1,16 +1,40 @@
 import styled from "styled-components";
 import {FiSearch}  from 'react-icons/fi';
+import {motion} from 'framer-motion';
+import { navAnim,  navContainerAnim } from "./Animation";
 
 
 export default function Navbar() {
+
+    const navLinks = [
+        {
+            name: 'Home',
+            id: '1'
+        },
+        {
+            name: 'Gallery',
+            id: '2'
+        },
+        {
+            name: 'AboutUs',
+            id: '3'
+        },
+        {
+            name: 'Services',
+            id: '4'
+        },
+    ]
   return (
-    <Nav>
-        <div className="navs">
-                <p>Home</p>
-                <p>Galley</p>
-                <p>Services</p>
-                <p>AboutUs</p>
-        </div>
+    <Nav 
+        variants={navAnim}
+        initial="hidden"
+        animate="visible"
+    >
+        <motion.div className="navs">
+        {navLinks.map((navs) => {
+            return  (<motion.p>{navs.name}</motion.p>)
+                })}
+        </motion.div>
         <LogoName>
             <h1>Milo</h1>
             <h1>Cuts</h1>
@@ -23,7 +47,7 @@ export default function Navbar() {
   );
 }
 
-const Nav = styled.div`
+const Nav = styled(motion.div)`
     display: flex;
     align-items: center;
     position: absolute;

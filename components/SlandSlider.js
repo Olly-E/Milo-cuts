@@ -1,5 +1,5 @@
 import React from 'react'
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide, Autoplay } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-cards";
 import { EffectCards } from "swiper";
@@ -37,6 +37,10 @@ export default function SlandSlider() {
       effect={"cards"}
       grabCursor={true}
       modules={[EffectCards]}
+      autoplay={{
+        delay: 2500,
+        disableOnInteraction: false,
+      }}
       className="mySwiper"
     >
       <SwiperSlide>
@@ -66,57 +70,6 @@ export default function SlandSlider() {
 }
 
 
-
-
-// import React from 'react'
-// import { Swiper, SwiperSlide } from "swiper/react";
-// import "swiper/css";
-// import "swiper/css/effect-cards";
-// import { EffectCards } from "swiper";
-// import style1 from '../assets/style1.jpg';
-// import style2 from '../assets/style2.jpg';
-// import styled from "styled-components";
-// import style5 from '../assets/style5.jpg';
-// import Image from 'next/image';
-
-// export default function SlandSlider() {
-
-//     const imagesSlide = [
-//         {
-//             id: 1,
-//             title: style1,
-//         },
-//         {
-//             id: 1,
-//             title: style2
-//         },
-//         {
-//             id: 1,
-//             title: style5,
-//         }
-//     ]
-
-//   return (
-//     <>
-//         <Swiper
-//         effect={"cards"}
-//         grabCursor={true}
-//         modules={[EffectCards]}
-//         className="mySwiper"
-//         style={{zIndex: '4000'}}
-//         >
-//         {imagesSlide.map((image) => {
-//         <SwiperSlide>
-//                 <ImageContainer>
-//                   <Image width={400} height={550} objectFit='cover' src={image.title}/>
-//                 </ImageContainer>
-//         </SwiperSlide>
-       
-//     }) }
-//         </Swiper>
-//   </>
-//   )
-// }
 
 
 const ImageContainer = styled.div`

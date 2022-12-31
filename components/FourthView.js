@@ -11,9 +11,11 @@ import barb3modified from '../assets/barb3modified.png';
 import barb4modified from '../assets/barb4modified.png';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import Image from 'next/image';
 import { IconButton } from '@mui/material';
+import { modalAnimation } from './Animation';
 
 export default function FourthView() {
   const [teamShowIndex, setTeamShowIndex] = useState(0);
@@ -29,7 +31,7 @@ export default function FourthView() {
     },
     {
       name: 'Beta',
-      jobTitle: 'Speed barber',
+      jobTitle: 'Stylist',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus molestiae laboriosam et. Quis repudiandae et iste quod alias accusantium illo corporis debitis deleniti, dolore libero iure amet praesentium doloribus beatae autem pariatur? Sunt earum nihil libero laboriosam dicta, commodi, maxime eum doloremque ad quia laborum veritatis ipsam debitis vitae iure quas provident animi! Dicta voluptate ad accusamus provident eaque natus et eum aspernatur sapiente, ipsa laborum repellendus? Reiciendis nesciunt pariatur ab? Libero praesentium optio, temporibus harum ipsa suscipit quasi et!',
       img: barb2,
       avatar: barb2modified,
@@ -37,7 +39,7 @@ export default function FourthView() {
     },
     {
       name: 'Dima',
-      jobTitle: 'Speed barber',
+      jobTitle: 'Carver',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus molestiae laboriosam et. Quis repudiandae et iste quod alias accusantium illo corporis debitis deleniti, dolore libero iure amet praesentium doloribus beatae autem pariatur? Sunt earum nihil libero laboriosam dicta, commodi, maxime eum doloremque ad quia laborum veritatis ipsam debitis vitae iure quas provident animi! Dicta voluptate ad accusamus provident eaque natus et eum aspernatur sapiente, ipsa laborum repellendus? Reiciendis nesciunt pariatur ab? Libero praesentium optio, temporibus harum ipsa suscipit quasi et!',
       img: barb3,
       avatar: barb3modified,
@@ -45,7 +47,7 @@ export default function FourthView() {
     },
     {
       name: 'Jaw',
-      jobTitle: 'Speed barber',
+      jobTitle: 'Liquid',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus molestiae laboriosam et. Quis repudiandae et iste quod alias accusantium illo corporis debitis deleniti, dolore libero iure amet praesentium doloribus beatae autem pariatur? Sunt earum nihil libero laboriosam dicta, commodi, maxime eum doloremque ad quia laborum veritatis ipsam debitis vitae iure quas provident animi! Dicta voluptate ad accusamus provident eaque natus et eum aspernatur sapiente, ipsa laborum repellendus? Reiciendis nesciunt pariatur ab? Libero praesentium optio, temporibus harum ipsa suscipit quasi et!',
       img: barb4,
       avatar: barb4modified,
@@ -53,7 +55,7 @@ export default function FourthView() {
     },
     {
       name: 'Periwinkle',
-      jobTitle: 'Speed barber',
+      jobTitle: 'Consultant',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus molestiae laboriosam et. Quis repudiandae et iste quod alias accusantium illo corporis debitis deleniti, dolore libero iure amet praesentium doloribus beatae autem pariatur? Sunt earum nihil libero laboriosam dicta, commodi, maxime eum doloremque ad quia laborum veritatis ipsam debitis vitae iure quas provident animi! Dicta voluptate ad accusamus provident eaque natus et eum aspernatur sapiente, ipsa laborum repellendus? Reiciendis nesciunt pariatur ab? Libero praesentium optio, temporibus harum ipsa suscipit quasi et!',
       img: barb2,
       avatar: barb2modified,
@@ -90,22 +92,51 @@ export default function FourthView() {
 
 
     <TeamSec>
-        <h1>The Lineup</h1>
-        <div className='carousel__display'>
-            <IconButton aria-label="delete" size="small" onClick={prev}>
+        <h2 className='heading'> The Lineup</h2>
+            <IconButton aria-label="delete" size="small" onClick={prev} sx={{position: 'absolute', top: '50%', left: '50px'}}>
                 <NavigateBeforeIcon sx={{color: 'white', background: 'black',fontSize: '2rem', padding: '0.5rem', borderRadius: '50%'}} fontSize="inherit" />
             </IconButton>
-            <div className="carousel__display__text">
-              <h2>{teamShow.name}</h2>
-              <h3>{teamShow.jobTitle}</h3>
-              <p>{teamShow.description}</p>
-            </div>
-            <div className='carousel__display__img'>
-              <Image src={teamShow.img} alt=""  objectFit='hidden'/>
-            </div>
-              <IconButton onClick={next}>
+            <IconButton onClick={next} sx={{position: 'absolute', top: '50%', right: '50px'}}>
                 <NavigateNextIcon sx={{color: 'white', background: 'black',fontSize: '2rem', padding: '0.5rem', borderRadius: '50%'}} fontSize="inherit" />
               </IconButton>
+        <div className='carousel__display'>
+            <div className="carousel__display__text">
+              <AnimatePresence>
+                <motion.div
+                key={teamShow.id}
+                  exit={{opacity: 0, }}
+                >
+                    <motion.h2
+                      key={teamShow.id}
+                      initial={{opacity: 0, y: 10, transition:{ease: 'easeInOut'}}}
+                      animate={{opacity: 1, y: 0, transition:{delay: 0.6, ease: 'easeInOut'}}}
+                      // exit={{opacity: 0, transition:{ease: 'easeInOut'}}}
+                    >{teamShow.name}</motion.h2>
+                    <motion.h3
+                      key={teamShow.id}
+                      initial={{opacity: 0, y: 10 }}
+                      animate={{opacity: 1, y: 0, transition:{delay: 0.8, ease: 'easeInOut'}}}
+                      // exit={{opacity: 0, transition:{ ease: 'easeInOut'}}}
+                    >{teamShow.jobTitle}</motion.h3>
+                    <motion.p
+                      key={teamShow.id}
+                      initial={{opacity: 0, y: 10}}
+                      animate={{opacity: 1, y: 0, transition:{delay: 1, ease: 'easeInOut'}}}
+                      // exit={{opacity: 0, transition:{ease: 'easeInOut'}}}
+                    >{teamShow.description}</motion.p>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+            <motion.div className='carousel__display__img'
+                  key={teamShow.id}
+                 initial={{opacity: 0}}
+                 animate={{opacity: 1, transition:{delay: 0.5}}}
+                 exit={{opacity: 0}}
+            >
+              <Image src={teamShow.img} alt=""  objectFit='hidden'/>
+            </motion.div>
+
+
         </div>
         <div className='avatar-carousel'>
               {teamInfo.map((team) => {
@@ -121,13 +152,13 @@ export default function FourthView() {
                       )
                     })}
         </div>
-              
     </TeamSec>
+
   )
 }
 
 
-const TeamSec = styled.section`
+const TeamSec = styled(motion.section)`
     color: white;
     background: black;
     height: 100vh;
@@ -137,15 +168,31 @@ const TeamSec = styled.section`
     overflow: hidden;
     position: relative;
     
+    .heading {
+      width: fit-content;
+      background: black;
+      padding: 1rem 2rem;
+      font-size: 3rem;
+      position: absolute;
+      top: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 4;
+      border-radius: 0.5rem 2rem 1rem 0
+    }
 
     .carousel__display {
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 4rem;
+      /* position: relative; */
+      margin-top: 15rem;
 
       &__text {
         width: 30%;
+        margin-right: 40rem;
+        /* position: absolute; */
         h2 {
           font-size: 3rem;
         }
@@ -161,6 +208,8 @@ const TeamSec = styled.section`
       &__img {
         width: 40rem;
         height: 50rem;
+        position: absolute;
+        right: 10%;
         img {
               -webkit-mask-image: radial-gradient(ellipse 90% 100% at 48% 45%, black 40%, transparent 50%);
               mask-image: radial-gradient(ellipse 90% 100% at 48% 45%, black 40%, transparent 50%);
