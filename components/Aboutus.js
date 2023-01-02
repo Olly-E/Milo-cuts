@@ -2,7 +2,9 @@ import Image from 'next/image';
 import React from 'react';
 import styled from 'styled-components';
 import aboutus from '../assets/aboutus.jpg'
-import barber_about from '../assets/barber_about.png'
+import barber_about from '../assets/barber_about.png';
+import { motion } from 'framer-motion';
+import { aboutUsContainerAnim, aboutUsTextAnim } from './Animation';
 
 export default function Aboutus() {
   return (
@@ -19,12 +21,24 @@ export default function Aboutus() {
               </div>
           </div>
       </SmallSec>
-      <div className='about__us__text'>
-                <p> 
+      <motion.div className='about__us__text'
+        variants={aboutUsContainerAnim}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{once: true}}
+        // viewport={{once: true}}
+        >
+                <motion.p
+                  variants={aboutUsTextAnim}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{once: true}}
+                  
+                > 
                     We could write on here that we've got the most amazing service ever, consistency and staff experience that supases every other for amazing prices... of course we do.. we're not capping about that, but what could be better than you dropping by and getting the ultimate experience yourself which of course, beats reading about all of it here... 
                 <span>because why not?</span>
-                </p>
-              </div>
+                </motion.p>
+      </motion.div>
     </BigSection>
   );
 }

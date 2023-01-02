@@ -274,4 +274,28 @@ export const container = {
     }
   }
 
-  
+  export const aboutUsContainerAnim = {
+    hidden: {
+      scale: 0,
+      opacity: 0
+    },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      originX: 0,
+      originY: 0,
+      transition: {duration: 0.8, ease: 'easeOut'}
+    }
+  } 
+
+  export const aboutUsTextAnim = {
+      hidden: {
+        opacity: 0,
+        y: 20,
+      },
+      visible: {
+        opacity: 1,
+        y: 0,
+        transition: {delay: 0.8, duration:0.7,  ease: 'easeInOut'}
+      }
+  }
