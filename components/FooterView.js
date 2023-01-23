@@ -1,47 +1,112 @@
 import { Button, TextField } from '@mui/material';
 import Script from 'next/script';
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import {motion} from 'framer-motion';
 import { BsFacebook, BsTwitter, BsYoutube, BsBehance } from 'react-icons/bs';
+import { IconAnim, iconAnim1, iconAnim2, iconAnim3, iconAnim4, miloAnim, newsLetterContainer, newsletterElme1, newsletterElme2, newsText1, newsText2, newsText3 } from './Animation';
+import { useScroll } from './useInScroll';
 
 export default function FooterView() {
+    const [element, controls] = useScroll();
+
     return (
-        <Foot>
+        <Foot ref={element}>
         <Script src="https://cdn.lordicon.com/fudrjiwc.js"></Script>
 
-        <FirstDi>
-            <div>
+        <FirstDi >
+            <motion.div
+                 variants={IconAnim}
+                 initial="hidden"
+                 whileInView="visible"
+                 viewport={{once:true}}
+                 style={{originY: 'bottom', originX: 'left'}}
+            >
             <lord-icon
                 src="https://cdn.lordicon.com/pkmkagva.json"
                 trigger="hover"
                 colors="primary:#0fa98d"
                 style={{width:'250px', height:"250px"}}>
             </lord-icon>
-            </div>
+            </motion.div>
             <div className='firstDi__text'>
-                <h3>Can't find what you're looking for </h3>
-                <p>Milo takes resposibility of his own we are here to serve and would very much like to be of help if you'd have us, that said you can reach us by clicking on any of those links below or stay updated by subscribing to our newslettes and product launch</p>
-                <p>direct mail</p>
+                <motion.h3
+                    variants={newsText1}
+                    initial="hidden"
+                    whileInView="visible"
+                 viewport={{once:true}}
+                >Can't find what you're looking for </motion.h3>
+                <motion.p
+                    variants={newsText2}
+                    initial="hidden"
+                    whileInView="visible"
+                 viewport={{once:true}}
+                >Milo takes resposibility of his own we are here to serve and would very much like to be of help if you'd have us, that said you can reach us by clicking on any of those links below or stay updated by subscribing to our newslettes and product launch</motion.p>
+                <motion.p
+                    variants={newsText3}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{once:true}}
+                >direct mail</motion.p>
             </div>
         </FirstDi>
-        <SecondDi>
-            <h3>Get Access to exclusive updates</h3>
-            <div className='text__area'>
+        <SecondDi
+            variants={newsLetterContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{once:true}}
+        >
+            <motion.h3
+                variants={newsletterElme1}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{once:true}}
+            >Get Access to exclusive updates</motion.h3>
+            <motion.div className='text__area'
+                variants={newsletterElme2}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{once:true}}
+            >
                 <input type="text" placeholder='drop email here'/>
                 <Button variant="contained" sx={{background: '#0fa98d', height: '2.7rem', width:'17rem',  borderRadius: '4rem', fontSize: '0.7rem', textTransform:'inherit', whiteSpace:'nowrap', padding: '0.5rem', boxSizing: 'border-box', '&:hover': {
                     backgroundColor: '#fff', color: '#0fa98d'} }}>Subscribe to the Newsletter</Button>
-            </div>
+            </motion.div>
         </SecondDi>
         <ThirdDi>
-        <motion.h2>
+        <motion.h2
+             variants={miloAnim}
+             initial="hidden"
+             whileInView="visible"
+             viewport={{once:true}}
+        >
             Milo
         </motion.h2>
         <motion.div className="footer__social__icons">
-            <BsFacebook />
-            <BsTwitter />
-            <BsYoutube />
-            <BsBehance />
+            <motion.span
+                variants={iconAnim1}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{once: true}}
+            ><BsFacebook /></motion.span>
+            <motion.span
+                variants={iconAnim2}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{once: true}}
+            ><BsTwitter /></motion.span> 
+            <motion.span
+                variants={iconAnim3}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{once: true}}
+            ><BsYoutube /></motion.span>
+            <motion.span
+                variants={iconAnim4}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{once: true}}
+            ><BsBehance /></motion.span>
         </motion.div>
         </ThirdDi>
     </Foot>
@@ -61,6 +126,7 @@ const FirstDi =  styled.div`
         padding: 10rem 20rem 5rem;
         gap: 6rem;
         box-sizing: border-box;
+        margin-bottom: 150px;
 
         .firstDi__text {
             h3 {
@@ -76,20 +142,27 @@ const FirstDi =  styled.div`
         }
 `;
 
-const SecondDi =  styled.div`
+const SecondDi =  styled(motion.div)`
     background: white;
     border-radius: 2rem;
-    margin: 0 15rem;
-    padding: 5rem 15rem;
-    margin-bottom: -10rem;
+    margin-top: -180px;
+    width: 1100px;
+    box-sizing: border-box;
     z-index: 1;
-    position: relative;
+    position: absolute;
+    transform-origin: top top;
+    display: flex;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    align-items: center;
+    flex-direction: column;
     box-shadow: 4px 2px 5px 0px rgba(0,0,0,0.45);
 
     h3 {
         color: black;
         margin-bottom: 3rem;
         text-align: center;
+        margin-top: 5rem;
     }
     .text__area {
         display: flex;
@@ -98,6 +171,7 @@ const SecondDi =  styled.div`
         align-items: center;
         padding: 0.2rem 0.3rem;
         background-color: black;
+        width: 68%;
         input {
             width: 100%;
             background: black;
@@ -119,6 +193,7 @@ const ThirdDi = styled.div`
     padding: 15rem 10rem 2rem;
     height: 20rem;
     box-sizing: border-box;
+    margin-top: 20px;
     .footer__social__icons{
         display: flex;
         gap: 2rem;

@@ -30,7 +30,7 @@ import Image from 'next/image';
 import {MdKeyboardBackspace} from 'react-icons/md'
 
 
-export default function GridModal({setShowModal}) {
+export default function GridModal({setShowModal, toggleOpen}) {
   
 
   const itemData = [
@@ -130,7 +130,10 @@ export default function GridModal({setShowModal}) {
       <motion.div
         
       >
-        <motion.div className='back' onClick={() => setShowModal(false)} 
+        <motion.div className='back' onClick={() => {
+          setShowModal(false);
+          toggleOpen()
+        }} 
           initial={{opacity: 0, x: '15px'}}
           animate={{opacity: 1, x: '0', transition:{delay: 0.5, duration: 0.5}}}
         >
@@ -139,6 +142,7 @@ export default function GridModal({setShowModal}) {
           variants={container}
           initial="hidden"
           animate="show"
+          exit="exit"
           style={{padding: 0, margin: 0}}
         >
           <ImageList variant="masonry" cols={5} gap={0} style={{columnGap: '8px' }}>
@@ -146,8 +150,8 @@ export default function GridModal({setShowModal}) {
               <ImageListItem key={item.imgTitle}>
                 <motion.div
                   variants={itemImg}
-                  initial={{opacity: 0}}
-                  animate={{opacity: 1}}
+                  initial={{opacity: 0, y: -15}}
+                  animate={{opacity: 1, y: 0}}
                 >
                  <Image
                   src={item.img}
@@ -170,16 +174,15 @@ export default function GridModal({setShowModal}) {
 
 const DivModal = styled(motion.div)`
   background: black;
-  width: 3%;
-  height: 1%;
+  width: 100%;
+  min-height: 200%;
   background: black;
   padding: 8rem;
   overflow-y: scroll;
   position: absolute;
-  border-radius: 50%;
-  top: 30rem;
-  left: 60rem;
-  z-index: 10000;
+  top: 0;
+  left: 0;
+  z-index: 1000000;
   box-sizing: border-box;
   overflow-y: hidden;
 

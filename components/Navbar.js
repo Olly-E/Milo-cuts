@@ -94,6 +94,11 @@ const LogoName = styled.div`
     display: flex;
     align-items: center;
     font-size: 0.5rem;
+    margin-left: -9.7rem;
+    gap: 0.5rem;
+    h1:nth-of-type(1){
+        color: var(--primary);
+    }
 `;
 const Search = styled.div`
     display: flex;

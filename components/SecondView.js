@@ -7,7 +7,7 @@ import img3 from '../assets/img3.png'
 import services from '../assets/services.jpg'
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { featureCardConatinerAnim, feautreCardAnim } from './Animation';
+import { featureImage, featureVariant, featureVariantChild, feautreCardAnim, feautreTextAnim1, feautreTextAnim2, feautreTextAnim3, feautreTextAnim4, frameAnimation, imageFrameAnimation} from './Animation';
 
 export default function SecondView() {
 
@@ -40,21 +40,36 @@ export default function SecondView() {
       <Container1
         
       >
-        <h2 className='conH1'>HAIR TREATMENT</h2>
-        <h1 className='conH2'>Our Feautured Hair Treatment</h1>
-        <p className='conp'>
-          Our Feuatured hair treatment services is second to none and absolutley top notch, with experts and hands-on attention, it'll leave you wanting for more...
-        </p>
-        <motion.div className='cat-card-con'
-          variants={featureCardConatinerAnim}
+        <motion.h2 className='conH1'
+            variants={feautreTextAnim1}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{once: true}}
+        >HAIR TREATMENT</motion.h2>
+        <motion.h1 className='conH2'
+          variants={feautreTextAnim2}
           initial="hidden"
-          whileInView="show"
+          whileInView="visible"
+          viewport={{once: true}}
+        >Our Feautured Hair Treatment</motion.h1>
+        <motion.p className='conp'
+          variants={feautreTextAnim3}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{once: true}}
+        >
+          Our Feuatured hair treatment services is second to none and absolutley top notch, with experts and hands-on attention, it'll leave you wanting for more...
+        </motion.p>
+        <motion.div className='cat-card-con'
+          variants={featureVariant}
+          initial="hidden"
+          whileInView="visible"
         viewport={{once: true}}
         >
           {feauturesCard.map((feature) => {
             return (
             <motion.div className='cat-card'
-              variants={feautreCardAnim}
+              variants={featureVariantChild}
             >
               <div style={{display: 'flex', justifyContent: 'center', marginBottom: '1rem'}}><Image src={feature.icon} height={64} width={64}/></div>
               <h3>{feature.head}</h3>
@@ -67,11 +82,28 @@ export default function SecondView() {
             )
           })}
         </motion.div>
-          <p className='all-services'>All Services</p>
+          <motion.p className='all-services'
+              variants={feautreTextAnim4}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{once: true}}
+          >All Services</motion.p>
       </Container1>
       <Container2>
-         <div className='div-dec' />
-         <Image src={services} width={550}  height={700} objectFit='cover' tabIndex={7}/>
+         <motion.div className='div-dec' 
+         variants={frameAnimation}
+         initial="hidden"
+         whileInView="visible"
+         viewport={{once: true}}
+         />
+         <motion.div
+          variants={featureImage}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{once: true}}
+         >
+            <Image src={services} width={550}  height={700} objectFit='cover' tabIndex={7}/>
+         </motion.div>
       </Container2>
     </SecondVieww>
   );
@@ -169,6 +201,5 @@ const SecondVieww = styled(motion.div)`
       position: absolute;
       border-radius: 0 0 0 3rem;
       border: 8px solid var(--primary);
-      
     }
   `;

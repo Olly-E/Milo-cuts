@@ -104,24 +104,27 @@ export default function FourthView() {
               <AnimatePresence>
                 <motion.div
                 key={teamShow.id}
-                  exit={{opacity: 0, }}
+                  exit={{opacity: 0, y: -30, transition:{ease: 'easeInOut'}}}
                 >
                     <motion.h2
                       key={teamShow.id}
                       initial={{opacity: 0, y: 10, transition:{ease: 'easeInOut'}}}
-                      animate={{opacity: 1, y: 0, transition:{delay: 0.6, ease: 'easeInOut'}}}
+                      whileInView={{opacity: 1, y: 0, transition:{delay: 0.6, ease: 'easeInOut'}}}
+                      viewport={{once: true}}
                       // exit={{opacity: 0, transition:{ease: 'easeInOut'}}}
                     >{teamShow.name}</motion.h2>
                     <motion.h3
                       key={teamShow.id}
                       initial={{opacity: 0, y: 10 }}
-                      animate={{opacity: 1, y: 0, transition:{delay: 0.8, ease: 'easeInOut'}}}
+                      whileInView={{opacity: 1, y: 0, transition:{delay: 0.8, ease: 'easeInOut'}}}
+                      viewport={{once: true}}
                       // exit={{opacity: 0, transition:{ ease: 'easeInOut'}}}
                     >{teamShow.jobTitle}</motion.h3>
                     <motion.p
                       key={teamShow.id}
                       initial={{opacity: 0, y: 10}}
-                      animate={{opacity: 1, y: 0, transition:{delay: 1, ease: 'easeInOut'}}}
+                      whileInView={{opacity: 1, y: 0, transition:{delay: 1, ease: 'easeInOut'}}}
+                      viewport={{once: true}}
                       // exit={{opacity: 0, transition:{ease: 'easeInOut'}}}
                     >{teamShow.description}</motion.p>
                 </motion.div>
@@ -129,9 +132,10 @@ export default function FourthView() {
             </div>
             <motion.div className='carousel__display__img'
                   key={teamShow.id}
-                 initial={{opacity: 0}}
-                 animate={{opacity: 1, transition:{delay: 0.5}}}
-                 exit={{opacity: 0}}
+                 initial={{opacity: 0, scale: 1.5}}
+                 whileInView={{opacity: 1, scale: 1, transition:{delay: 0.5,type:'tween', durtion: 2, ease:'easeInOut'}}}
+                 viewport={{once: true}}
+                 exit={{opacity: 0, scale: 1.5}}
             >
               <Image src={teamShow.img} alt=""  objectFit='hidden'/>
             </motion.div>

@@ -35,6 +35,9 @@ const ScrollToTop = () => {
 
 
 const Div = styled(motion.div)`
+:hover p {
+    background: white;
+}
    
     .none {
         opacity: 0;
@@ -50,6 +53,9 @@ const Div = styled(motion.div)`
         bottom: 40px;
         right: 40px;
         z-index: 10000;
+        :hover svg {
+            color: var(--primary);
+        }
         svg {
             color: white;
             position: absolute;
@@ -59,6 +65,7 @@ const Div = styled(motion.div)`
             left: 50%;
             transform: translateX(-50%);
             margin-top: 30%;
+            transition: all 500ms ease-in-out;
         }
     }
     p {

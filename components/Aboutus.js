@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import aboutus from '../assets/aboutus.jpg'
 import barber_about from '../assets/barber_about.png';
 import { motion } from 'framer-motion';
-import { aboutUsContainerAnim, aboutUsTextAnim } from './Animation';
+import { aboutImgContainer, aboutUsContainerAnim, aboutUsTextAnim } from './Animation';
 
 export default function Aboutus() {
   return (
@@ -12,13 +12,26 @@ export default function Aboutus() {
       <SmallSec>
             <div className='fancy-grid'>
 
-              <div className='fancy-grid__image'>
-                <h1 className='about__us'>WHY WE <span>ROCK</span></h1>
-                <Image 
-                  src={barber_about}
-                  alt="aboutus"
-                /> 
-              </div>
+              <motion.div className='fancy-grid__image'
+                variants={aboutImgContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{once: true}}
+                style={{originX: 'top', originY: 'top'}}
+              >
+                <motion.h1 className='about__us'
+                >WHY WE <motion.span>ROCK</motion.span></motion.h1>
+                <motion.div
+                  initial={{scale:1.5}}
+                  whileInView={{scale:1, transition: {delay: 0.2, duration: 1}}}
+                  viewport={{once: true}}
+                >
+                  <Image 
+                    src={barber_about}
+                    alt="aboutus"
+                  />
+                </motion.div>
+              </motion.div>
           </div>
       </SmallSec>
       <motion.div className='about__us__text'
@@ -26,7 +39,6 @@ export default function Aboutus() {
         initial="hidden"
         whileInView="visible"
         viewport={{once: true}}
-        // viewport={{once: true}}
         >
                 <motion.p
                   variants={aboutUsTextAnim}
@@ -36,8 +48,12 @@ export default function Aboutus() {
                   
                 > 
                     We could write on here that we've got the most amazing service ever, consistency and staff experience that supases every other for amazing prices... of course we do.. we're not capping about that, but what could be better than you dropping by and getting the ultimate experience yourself which of course, beats reading about all of it here... 
-                <span>because why not?</span>
                 </motion.p>
+                <motion.span
+                  initial={{opacity: 0, y: 30}}
+                  whileInView={{opacity: 1, y: 0, transition: {delay: 2.9, duration: 1}}}
+                  viewport={{once: true}}
+                >because why not?</motion.span>
       </motion.div>
     </BigSection>
   );
@@ -48,9 +64,8 @@ const BigSection = styled.div`
   padding:1rem 4rem 5rem;
   box-sizing: border-box;
   position: relative;
-  overflow: hidden;
   height: 100vh;
-  position: relative;
+  /* position: relative; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -68,7 +83,6 @@ const BigSection = styled.div`
     box-shadow: -1px 5px 5px 0px rgb(145 145 145 / 67%);
     line-height: 1.8rem;
     width: 22rem;
-
 
     span {
       background: black;
@@ -110,6 +124,7 @@ const SmallSec = styled.div`
     &__image {
       width: 45rem;
       margin-top: 2rem;
+      overflow: hidden;
     }
   }
 

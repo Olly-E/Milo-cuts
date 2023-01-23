@@ -1,44 +1,80 @@
 import styled from '@emotion/styled'
 import React from 'react';
 import schedule from '../assets/schedule.jpg';
-import Image from 'next/image'
+import Image from 'next/image';
+import {motion} from 'framer-motion'
 import { BsCalendar2DateFill, BsClockFill, BsStopwatchFill } from 'react-icons/bs';
 import { MdEditCalendar } from 'react-icons/md';
 import { FaStopwatch } from 'react-icons/fa';
+import { scheduleHeadingAnim, scheduleImageAnim, scheduleTextAnim, scheduleTextAnim2, scheduleTextAnim3, scheduleTextAnim4 } from './Animation';
 
 export default function ThirdView() {
 
 
   return (
     <ThirdSection>
-        <div className="label">
+      <div className="overflow">
+        <motion.div className="label"
+          variants={scheduleHeadingAnim}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{once: true}}
+        >
               <h1>Scheduled cuts</h1>
-        </div>
+        </motion.div>
         <div className='grid-container'>
             <div className='small-div first'>
                 {/* <h1>First grid</h1> */}
-                <Image src={schedule} alt="schedule" />
+                <motion.div
+                   variants={scheduleImageAnim}
+                   initial="hidden"
+                   whileInView="visible"
+                   viewport={{once: true}}
+                >
+                  <Image src={schedule} alt="schedule" />
+                </motion.div>
             </div>
-            <div className='small-div fifth'>
+            <motion.div className='small-div fifth'
+              variants={scheduleTextAnim}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{once: true}}
+            >
                 <span className='drop-icons'><MdEditCalendar /></span>
                 <h2>Flexible schedule adjustments</h2>
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, eaque!</p>
-            </div>
-            <div className='small-div second'>
+            </motion.div>
+            <motion.div className='small-div second'
+              variants={scheduleTextAnim2}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{once: true}}
+            >
                 <span className='drop-icons'><BsClockFill /></span>
                 <h2>Pre scheduled appointments</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, rerum?</p>
-            </div>
-            <div className='small-div third'>
+            </motion.div>
+            <motion.div className='small-div third'
+              variants={scheduleTextAnim3}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{once: true}}
+            >
                 <span className='drop-icons'><FaStopwatch /></span>
                 <h2>Precise cut duration</h2>
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, nihil.</p>
-            </div>
-            <div className='small-div fourth'>
+            </motion.div>
+            <motion.div className='small-div fourth'
+              variants={scheduleTextAnim4}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{once: true}}
+            >
                 <span className='drop-icons'><BsCalendar2DateFill /></span>
                 <h2>Convinient reappoinments</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, laborum.</p>
-            </div>
+            </motion.div>
+      </div>
         </div>
     </ThirdSection>
   )
@@ -48,15 +84,19 @@ export default function ThirdView() {
 const ThirdSection = styled.div`
     height: 100vh;
     scroll-snap-align: start;
-  scroll-snap-stop: always;
+    scroll-snap-stop: always;
     background: black;
     color: white;
-    padding: 5rem 10rem;
+    padding: 7rem 10rem;
+    box-sizing: border-box;
+    .overflow {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 2rem;
     box-sizing: border-box;
+    overflow: hidden;
+    }
     
     .label {
       flex: 0.6;
@@ -73,8 +113,6 @@ const ThirdSection = styled.div`
       h1 {
         font-size: 3rem;
         transform: rotate(90deg);
-        
-        
       }
     }
     
@@ -130,14 +168,13 @@ const ThirdSection = styled.div`
       &:nth-of-type(1){
         grid-area: one;
         height: 38rem;
-        background: white;
         overflow: hidden;
         padding: 0;
 
         span {
           width: 200%;
           height: 100%;
-          
+          transform: translateY(10px);
           img {
             object-fit: cover;
           }
